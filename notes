@@ -1,0 +1,17 @@
+Steps followed:
+
+1)Added database name in app_local.php file in config
+
+2)In routes added the base path as /PluginName so that every other route starts with this
+  and for every controller added /ControllerName to maintain consistency in routes naming.
+
+3)To accept id as a parameter in pugin rotes        
+  $routes->connect('/arealevel/edit/:id', ['controller' => 'AreaLevel', 'action' => 'edit'])
+    ->setPass(['id'])
+    ->setPatterns(['id' => '\d+'])
+
+Area Level Controller:
+
+Area Controller:
+
+add($id=0) : id is parent id. Default value is 0. There already exist a 
