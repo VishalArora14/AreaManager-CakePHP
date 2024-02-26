@@ -6,11 +6,20 @@ use Cake\Validation\Validator;
 
 class AreaLevelsTable extends Table
 {
-    // public function initialize(array $config)
-    // {
-    //     parent::initialize($config);
-    //     // Additional initialization goes here
-    // }
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
+        // Additional initialization goes here
+
+        $this->setTable('area_levels');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
+
+        $this->hasMany('Areas', [
+            'foreignKey' => 'level_id',
+            'className' => 'AreaManager.Areas',
+        ]);
+    }
 
     public function validationDefault(Validator $validator)
     {
@@ -23,7 +32,7 @@ class AreaLevelsTable extends Table
                 ]
             ])
             ->maxLength('name', 255)
-            ->regex('name', '/^[a-zA-Z0-9\s]*$/')
+            ->regex('name', '/^[a-zA-Z0-9][\sa-zA-Z0-9]*[a-zA-Z0-9]$/')
 
             ->requirePresence('level', 'Area Level is needed')
             ->range('level', [0, 100])

@@ -78,8 +78,12 @@ class AreaLevelController extends AppController
 
     public function getallarealevel()
     {
-        $data = $this->AreaLevels->find('all')->toArray();
+        $data = $this->AreaLevels->find("all")->contain(['Areas'])->toArray();
         // $this->autoRender = false;
+        // foreach($data as $key=>$value){
+        //     print_r(count($value["areas"]));
+        //     echo "<br><br>";
+        // }
         // print_r($data);
         $this->set("areaLevelData", $data);
     }

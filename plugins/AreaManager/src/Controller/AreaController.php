@@ -25,7 +25,7 @@ class AreaController extends AppController
 
         $this->set("selectedParentId", $id);
         
-        //Area Level Dropdown list options
+        // Area Level Dropdown list options without associations
         $areaLevelData = $this->AreaLevels->find('all')->toArray();
         $areaLevelIdName = []; // [ 1->Country 2->State 3->District ... ]
         foreach($areaLevelData as $key=>$val){
@@ -115,8 +115,17 @@ class AreaController extends AppController
 
     public function getallarea()
     {
-        $data = $this->Areas->find('all'); //->toArray()
+        $data = $this->Areas->find("all")->contain(["ParentAreas", "ChildAreas"])->toArray();
         $this->set("areaData", $data);
+        // foreach($data as $key => $value){
+        //     print_r($key);
+        //     print_r($value);
+        //     echo "<br>";
+        //     // print_r($value["area_level"]);
+        //     echo "<br>";
+        //     echo "<br>";
+        // }
+        // $this->autoRender = false;
     }
 
     public function edit($id = null)

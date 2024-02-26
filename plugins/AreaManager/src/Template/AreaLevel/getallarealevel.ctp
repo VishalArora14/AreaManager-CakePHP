@@ -17,6 +17,7 @@
               <th>Level</th>
               <th>Name</th>
               <th>Is Active</th>
+              <th>Added Areas</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -44,7 +45,10 @@
                   <?= $value->name ?>
                 </td>
                 <td>
-                  <?= $value->is_active ?>
+                  <?= $value->is_active ? "✅" : "❌" ?>
+                </td>
+                <td>
+                  <?= count($value["areas"]) ?>
                 </td>
 
 

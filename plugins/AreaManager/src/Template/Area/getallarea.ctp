@@ -12,9 +12,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th>S.No.</th>
+              <!-- <th>S.No.</th> -->
               <th>Area_Id</th>
               <th>Name</th>
+              <th>Parent of</th>
               <th>Level_Id</th>
               <th>Parent_Id</th>
               <th>Created_At</th>
@@ -33,14 +34,17 @@
               ?>
 
               <tr class="info">
-                <td>
-                  <?= $count++ ?>
-                </td>
+                <!-- <td>
+                  <?php // $count++ ?>
+                </td> -->
                 <td>
                   <?= $value->id ?>
                 </td>
                 <td>
                   <?= $value->name ?>
+                </td>
+                <td>
+                  <?= count($value["child_areas"]) ?>
                 </td>
                 <td>
                   <?= $value->level_id ?>

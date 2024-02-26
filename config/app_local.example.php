@@ -37,6 +37,7 @@ return [
     'Datasources' => [
         'default' => [
             'host' => 'localhost',
+            // 'host' => '0.0.0.0',
             /*
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
@@ -61,6 +62,7 @@ return [
     'EmailTransport' => [
         'default' => [
             'host' => 'localhost',
+            // 'host' => '0.0.0.0',
             'port' => 25,
             'username' => null,
             'password' => null,
