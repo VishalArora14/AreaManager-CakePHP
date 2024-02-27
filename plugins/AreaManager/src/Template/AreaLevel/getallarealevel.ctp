@@ -2,11 +2,11 @@
   <div class="primary">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <div class="panel-title btn btn-outline-info">
+        <h3 class="panel-title btn btn-outline-info">
           <?php
           echo $this->html->link("+Add New Area Level", "/areamanager/arealevel/add", ["class" => "btn btn-success pull-right", "style" => "margin-top:30px"])
             ?>
-        </div>
+        </h3>
       </div>
       <div class="panel-body">
         <table class="table">
@@ -17,7 +17,7 @@
               <th>Level</th>
               <th>Name</th>
               <th>Is Active</th>
-              <th>Added Areas</th>
+              <th>Times Referred</th>
               <th>Actions</th>
             </tr>
           </thead>

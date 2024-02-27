@@ -115,11 +115,11 @@ class AreaController extends AppController
 
     public function getallarea()
     {
-        $data = $this->Areas->find("all")->contain(["ParentAreas", "ChildAreas"])->toArray();
+        $data = $this->Areas->find("all")->contain(["ParentAreas", "ChildAreas", "AreaLevels"])->toArray();
         $this->set("areaData", $data);
         // foreach($data as $key => $value){
-        //     print_r($key);
-        //     print_r($value);
+        //     // print_r($key);
+        //     print_r($value["area_level"]["name"]);
         //     echo "<br>";
         //     // print_r($value["area_level"]);
         //     echo "<br>";

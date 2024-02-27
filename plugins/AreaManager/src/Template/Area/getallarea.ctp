@@ -13,11 +13,11 @@
           <thead>
             <tr>
               <!-- <th>S.No.</th> -->
-              <th>Area_Id</th>
+              <!-- <th>Area_Id</th> -->
               <th>Name</th>
               <th>Parent of</th>
-              <th>Level_Id</th>
-              <th>Parent_Id</th>
+              <th>Level</th>
+              <th>Parent</th>
               <th>Created_At</th>
               <th>Modified_At</th>
               <th>Actions</th>
@@ -37,9 +37,9 @@
                 <!-- <td>
                   <?php // $count++ ?>
                 </td> -->
-                <td>
-                  <?= $value->id ?>
-                </td>
+                <!-- <td>
+                  <?php // $value->id ?>
+                </td> -->
                 <td>
                   <?= $value->name ?>
                 </td>
@@ -47,10 +47,10 @@
                   <?= count($value["child_areas"]) ?>
                 </td>
                 <td>
-                  <?= $value->level_id ?>
+                  <?= ($value["area_level"]["name"] == "Highest_Level") ? "None" : $value["area_level"]["name"] ?>
                 </td>
                 <td>
-                  <?= $value->parent_id ?>
+                  <?= ($value["parent_area"]["name"] == "Highest_Area") ? "None" : $value["parent_area"]["name"] ?>
                 </td>
                 <td>
                   <?= $value->created_at ?>
@@ -63,7 +63,7 @@
                 <td>
                   <?php
                   echo $this->Html->link(
-                    "Edit",
+                    "edit",
                     "/areamanager/area/edit/" . $value->id,
                     [
                       "class" => "btn btn-info"
