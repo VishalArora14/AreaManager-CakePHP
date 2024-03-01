@@ -49,3 +49,17 @@ configuration relevant for your application.
 The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
+
+![Image](.github/images/1.jpg)
+![Image](.github/images/2.jpg)
+![Image](.github/images/3.jpg)
+![Image](.github/images/4.jpg)
+![Image](.github/images/5.jpg)
+![Image](.github/images/6.jpg)
+![Image](.github/images/7.jpg)
+![Image](.github/images/8.jpg)
+![Image](.github/images/9.jpg)
+![Image](.github/images/10.jpg)
+![Image](.github/images/11.jpg)
+![Image](.github/images/12.jpg)
+![Image](.github/images/13.jpg)
