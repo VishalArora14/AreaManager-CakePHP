@@ -63,7 +63,7 @@
                 <td>
                   <?php
                   echo $this->Html->link(
-                    "edit",
+                    "Edit",
                     "/areamanager/area/edit/" . $value->id,
                     [
                       "class" => "btn btn-info"

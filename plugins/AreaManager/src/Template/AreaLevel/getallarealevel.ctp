@@ -12,10 +12,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th>S.No.</th>
-              <th>Area_Level_Id</th>
-              <th>Level</th>
-              <th>Name</th>
+              <!-- <th>S.No.</th> -->
+              <!-- <th>Area_Level_Id</th> -->
+              <th>Level Depth</th>
+              <th>Level Name</th>
               <th>Is Active</th>
               <th>Times Referred</th>
               <th>Actions</th>
@@ -32,12 +32,12 @@
             ?>
 
               <tr class="info">
-                <td>
-                  <?= $count++ ?>
-                </td>
-                <td>
-                  <?= $value->id ?>
-                </td>
+                <!-- <td>
+                  <?php // $count++ ?>
+                </td> -->
+                <!-- <td>
+                  <?php // $value->id ?>
+                </td> -->
                 <td>
                   <?= $value->level ?>
                 </td>
