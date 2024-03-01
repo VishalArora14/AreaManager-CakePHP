@@ -113,19 +113,46 @@ class AreaController extends AppController
         }
     }
 
+    public function countChildren($cur_area_id, &$area_idx_in_data, &$data, &$count_child_area_by_id){
+        $arr_idx = $area_idx_in_data[$cur_area_id];
+        $curData = $data[$arr_idx];
+        // debug($curData);
+        $immediate_children_count = count($curData["child_areas"]);
+        $sub_child_count = 0;
+        foreach($curData["child_areas"] as $key=>$value){
+            if($value["id"] == $cur_area_id){
+                continue; //since highest area parent is highest area itself;
+            }
+            $sub_child_count += $this->countChildren($value["id"], $area_idx_in_data, $data, $count_child_area_by_id);
+        }
+        return $count_child_area_by_id[$cur_area_id] = $immediate_children_count + $sub_child_count;
+    }
+
     public function getallarea()
     {
-        $data = $this->Areas->find("all")->contain(["ParentAreas", "ChildAreas", "AreaLevels"])->toArray();
-        $this->set("areaData", $data);
-        // foreach($data as $key => $value){
-        //     // print_r($key);
-        //     print_r($value["area_level"]["name"]);
-        //     echo "<br>";
-        //     // print_r($value["area_level"]);
-        //     echo "<br>";
-        //     echo "<br>";
-        // }
         // $this->autoRender = false;
+
+        $data = $this->Areas->find("all")->contain(["ParentAreas", "ChildAreas", "AreaLevels"])->toArray();
+        // debug($data);
+        $this->set("areaData", $data);
+       
+        //Recursively count total number of children and sub-children of an area
+        // $count_immediate_children_by_id = [];
+        $area_idx_in_data = []; //hashmap to know area is at which idx in data array
+
+        for($i=0; $i<count($data); $i++){
+            $value = $data[$i];
+            // $count_immediate_children_by_id[$value["id"]] = count($value["child_areas"]);
+            $area_idx_in_data[$value["id"]] = $i;
+        }
+        // debug($count_immediate_children_by_id);
+        // debug($area_idx_in_data);
+
+        $count_child_area_by_id = [];
+        $startId = $area_idx_in_data["0"];
+        $this->countChildren($startId, $area_idx_in_data, $data, $count_child_area_by_id);
+
+        $this->set("get_total_children_by_id", $count_child_area_by_id);
     }
 
     public function edit($id = null)

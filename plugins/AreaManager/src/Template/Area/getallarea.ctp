@@ -15,9 +15,9 @@
               <!-- <th>S.No.</th> -->
               <!-- <th>Area_Id</th> -->
               <th>Name</th>
-              <th>Parent of</th>
+              <th>Total Children</th>
               <th>Level</th>
-              <th>Parent</th>
+              <th>Parent Name</th>
               <th>Created_At</th>
               <th>Modified_At</th>
               <th>Actions</th>
@@ -44,7 +44,7 @@
                   <?= $value->name ?>
                 </td>
                 <td>
-                  <?= count($value["child_areas"]) ?>
+                  <?= $get_total_children_by_id[$value["id"]] ?>
                 </td>
                 <td>
                   <?= ($value["area_level"]["name"] == "Highest_Level") ? "None" : $value["area_level"]["name"] ?>
